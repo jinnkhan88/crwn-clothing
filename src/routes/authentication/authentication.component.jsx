@@ -1,9 +1,11 @@
+import SigninForm from "../../components/sign-in-form copy/sign-in-form.component";
 import SignupForm from "../../components/sign-up-form/sign-up-form.component";
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup
 } from "../../utils/firebase.utils";
 
+import "./authentication.styles.scss";
 const SignIn = () => {
   const loginUser = async () => {
     const { user } = await signInWithGooglePopup();
@@ -12,9 +14,8 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <h1>Sign in Page</h1>
-      <button onClick={loginUser}> Sign In with Google Popup</button>
+    <div className="authentication-container">
+      <SigninForm />
       <SignupForm />
     </div>
   );

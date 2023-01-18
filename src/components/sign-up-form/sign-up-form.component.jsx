@@ -23,6 +23,10 @@ const SignupForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -35,6 +39,7 @@ const SignupForm = () => {
       const userDocument = await createUserDocumentFromAuth(user, {
         displayName
       });
+      resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Can not create user.email already exists");
@@ -83,9 +88,7 @@ const SignupForm = () => {
           name="confirmPassword"
         />
 
-        <Button buttonType={"inverted"} type="submit">
-          Sign up
-        </Button>
+        <Button type="submit">Sign up</Button>
       </form>
     </div>
   );
