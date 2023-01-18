@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth
@@ -34,8 +34,6 @@ const SignupForm = () => {
     }
     try {
       let { user } = await createAuthUserWithEmailAndPassword(email, password);
-      console.log({ user });
-
       const userDocument = await createUserDocumentFromAuth(user, {
         displayName
       });
@@ -44,7 +42,6 @@ const SignupForm = () => {
       if (error.code === "auth/email-already-in-use") {
         alert("Can not create user.email already exists");
       } else {
-        console.log("user creation encountered an error", error);
       }
     }
   };
