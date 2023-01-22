@@ -1,11 +1,11 @@
-import SigninForm from "../../components/sign-in-form copy/sign-in-form.component";
+import SigninForm from "../../components/sign-in-form/sign-in-form.component";
 import SignupForm from "../../components/sign-up-form/sign-up-form.component";
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup
 } from "../../utils/firebase.utils";
+import { AuthenticationContainer } from "./authentication.styles";
 
-import "./authentication.styles.scss";
 const SignIn = () => {
   const loginUser = async () => {
     const { user } = await signInWithGooglePopup();
@@ -14,10 +14,10 @@ const SignIn = () => {
   };
 
   return (
-    <div className="authentication-container">
+    <AuthenticationContainer>
       <SigninForm />
       <SignupForm />
-    </div>
+    </AuthenticationContainer>
   );
 };
 
