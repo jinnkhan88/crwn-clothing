@@ -48,7 +48,6 @@ const SigninForm = () => {
           alert("User not found");
           break;
         default:
-          console.log(error);
           break;
       }
     }

@@ -81,10 +81,8 @@ export const createUserDocumentFromAuth = async (
   additionalInformation = {}
 ) => {
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userDocRef);
 
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot.exists());
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -96,9 +94,7 @@ export const createUserDocumentFromAuth = async (
         createdAt,
         ...additionalInformation
       });
-    } catch (err) {
-      console.log("error creating user", err.message);
-    }
+    } catch (err) {}
   }
 
   return userSnapshot;
@@ -126,7 +122,6 @@ export const getCurrentUser = () => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (userAuth) => {
-        console.log(userAuth);
         unsubscribe();
         resolve(userAuth);
       },

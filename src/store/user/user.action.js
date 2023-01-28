@@ -20,7 +20,6 @@ export const googleSignInStart = () =>
   createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
 
 export const emailSignInStart = (email, password) => {
-  console.log(`emailSignInStart`);
   return createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, {
     email,
     password

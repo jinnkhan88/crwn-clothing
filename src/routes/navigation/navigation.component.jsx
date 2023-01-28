@@ -22,7 +22,6 @@ const Navigation = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
 
   // const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
 
   const signOutHandler = () => {
     dispatch(signOutStart());

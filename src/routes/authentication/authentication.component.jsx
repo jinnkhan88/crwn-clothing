@@ -9,7 +9,7 @@ import { AuthenticationContainer } from "./authentication.styles";
 const SignIn = () => {
   const loginUser = async () => {
     const { user } = await signInWithGooglePopup();
-    console.log(user);
+
     const userDocRef = createUserDocumentFromAuth(user);
   };
 

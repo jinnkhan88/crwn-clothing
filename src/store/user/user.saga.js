@@ -27,10 +27,7 @@ export function* getSnapShotFromUserAuth(userAuth, additionalDetails) {
       additionalDetails
     );
 
-    console.log(userSnapshot);
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
-    console.log(userSnapshot);
-    console.log(userSnapshot.data());
   } catch (error) {
     yield put(signInFailure(error));
   }
@@ -38,9 +35,8 @@ export function* getSnapShotFromUserAuth(userAuth, additionalDetails) {
 
 export function* signInWithGoogle() {
   try {
-    console.log("sage SignInWithGoogle");
     const { user } = yield call(signInWithGooglePopup);
-    console.log(user);
+
     yield call(getSnapShotFromUserAuth, user);
   } catch (error) {
     yield put(signInFailure(error));
@@ -97,7 +93,6 @@ export function* signOut() {
   }
 }
 export function* onGoogleSignInStart() {
-  console.log("on google sign in start saga");
   yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
 
@@ -106,7 +101,6 @@ export function* onCheckUserSession() {
 }
 
 export function* onEmailSignInStart() {
-  console.log("onEmailSignInStart");
   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
